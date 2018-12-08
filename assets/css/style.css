@@ -1,0 +1,123 @@
+.my-overlay {
+	display: flex;
+	margin-bottom: 50px;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: auto;
+}
+.my-overlay button {
+	
+	cursor: pointer;
+}
+.my-overlay-inner {
+	display: table-cell;
+	vertical-align: middle;
+}
+.my-overlay button a {
+	color: inherit;
+	text-decoration: none !important;
+}
+.backend_optin_iframe__container {
+	max-width: 700px;
+	margin-bottom: 20px;
+}
+.backend_optin_iframe__container .header {
+	background-color: lightgrey;
+	padding: 15px;
+}
+.backend_optin_iframe__container h2 {
+	display: inline-block;
+	margin: 0px;
+}
+.backend_optin_iframe__container .icon {
+	display: inline-block;
+	height: 100%;
+	float: right;
+	font-size: 2em;
+	width: 30px;
+	text-align: right;
+	cursor: pointer;
+	font-weight: 600;
+	display: none;
+}
+.backend_optin_iframe .select_pages {
+	display: none;
+}
+.backend_optin_iframe__container .icon.active,
+.backend_optin_iframe__container .select_pages.active {
+	display: block;
+}
+.backend_optin_iframe__container .backend_optin_iframe__inner {
+	display: none;
+	padding-left: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.backend_optin_iframe__container .backend_optin_iframe__inner .image_size {
+	padding-top: 30px;
+}
+.backend_optin_iframe__container .backend_optin_iframe__inner.active {
+	display: block;
+}
+.backend_optin_iframe__container textarea{
+	width: 100%;
+	height: 200px;
+}
+
+.backend_optin_iframe__container table,
+.backend_optin_iframe__container input[type="text"] {
+	width: 100%;
+}
+.backend_optin_iframe__container table {
+	border-collapse: collapse;
+}
+.backend_optin_iframe__container table tr th,
+.backend_optin_iframe__container table tr td {
+	width: 50%;
+	text-align: left;
+	vertical-align: top;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+.backend_optin_iframe__container table tr {
+	border-bottom: 1px solid lightgrey;
+}
+.backend_optin_iframe__container table tr:last-child{
+	border-bottom: 0px;
+}
+.backend_optin_iframe__container input[type="submit"], .backend_optin_iframe button,
+.backend_optin_iframe label.btn {
+	background-color: lightgrey;
+	padding: 8px 15px;
+	border: none;
+	margin-top: 20px;
+}
+.backend_optin_iframe label.btn {
+	background-color: transparent;
+	border: 1px solid lightgrey;
+}
+.backend_optin_iframe label.btn.active {
+	background-color: #cc7c20;
+	border: 1px solid #cc7c20;
+}
+.backend_optin_iframe label.wert0.active {
+	background-color: lightgrey;	
+	border: 1px solid lightgrey;
+}
+.backend_optin_iframe .imageForOverlay {
+	margin-bottom: 20px;
+}
+.wp-picker-container button {
+	width: 30px;
+}
+.wp-picker-container button .wp-color-result-text {
+	display: none;
+}
+.select_pages {
+	margin-top: 30px;
+}
+.backend_optin_iframe__inner select {
+	height: auto;
+}
