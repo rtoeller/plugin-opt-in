@@ -2,8 +2,8 @@
 	/**
 	 * Plugin Name:  OptIn Content
 	 * Plugin URI:
-	 * Description: Dieses Plugin benötigt einen Opt In um Iframes nachzuladen
-	 * Version: 0.15.2
+	 * Description: This plugin sets overlays about content that should be shown after approval
+	 * Version: 0.2.10
 	 * Author: Rebecca Töller
 	 * License: GPL2
 	 * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
