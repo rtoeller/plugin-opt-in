@@ -15,6 +15,7 @@
 
     require_once( $optin_content_pfad . 'include/optin_content_backend_menu.php' );
     require_once( $optin_content_pfad . 'include/optin_content_func_database.php' );
+    require_once( $optin_content_pfad ) . 'src/init.php';
 
     /*
      * This function do plugin settings in the backend menu
@@ -41,7 +42,6 @@
         $name = $atts['name'];
 
         $content = do_overlay($id, $name);
-
         return $content;
     }
 
@@ -109,15 +109,16 @@
      * In this function is the overlay. This is loading in the shortcode
      */
 	function do_overlay( $id, $name ) {
-		global $wpdb;
-		if( $name ) {
+	    global $wpdb;
+		/*if( $name ) {
             $result_content_box = $wpdb->get_results( 'select * from ' . $wpdb->prefix . 'optin_content where contentbox_name =' . $name );
             $get_data_overlay = $wpdb->get_results( 'select * from ' . $wpdb->prefix . 'optin_content_overlay where  =' . $id);
-        }
-        else {
+
+        }*/
+        //else {
             $result_content_box = $wpdb->get_results( 'select * from ' . $wpdb->prefix . 'optin_content where id =' . $id );
             $get_data_overlay = $wpdb->get_results( 'select * from ' . $wpdb->prefix . 'optin_content_overlay where id =' . $id);
-        }
+        //}
 
 
         $optin_content = $result_content_box[0]->contentbox_code;
@@ -144,7 +145,7 @@
             $css_overlay .= 'height: '.$height_overlay_db.(is_numeric($height_overlay_db) ? 'px' : '').';';
         } else {
             if(!$overlay_height) {
-                $overlay_height = searchSize ( $optin_content, '="', 'height' );
+                $overlay_height = search_size ( $optin_content, '="', 'height' );
             }
             $css_overlay .= (!$overlay_height ? '' : 'height: '.$overlay_height.';');
         }
@@ -154,7 +155,7 @@
             $css_overlay .= 'width: '.$width_overlay.(is_numeric($width_overlay) ? 'px' : '').';';
         } else {
             if (!$overlay_width) {
-                $overlay_width = searchSize($optin_content, '="', 'width');
+                $overlay_width = search_size($optin_content, '="', 'width');
             }
             $css_overlay .= (!$overlay_width ? '' : 'width: ' . $overlay_width . ';');
         }
