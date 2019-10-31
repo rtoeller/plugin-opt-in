@@ -6,10 +6,20 @@
 	align-items: center;
 	width: 100%;
 	height: auto;
+	color:  #004da0;
 }
-.my-overlay button {
-	
+.my-overlay button {	
 	cursor: pointer;
+}
+.my-overlay-inner .overlayText {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color:  #004da0;
+}
+.overlayText {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color:  #004da0;
 }
 .my-overlay-inner {
 	display: table-cell;
@@ -120,4 +130,9 @@
 }
 .backend_optin_iframe__inner select {
 	height: auto;
+}
+@media screen and (max-width: 1024px) {
+	.my-overlay {
+		width: 100% !important;
+	}
 }

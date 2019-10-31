@@ -39,7 +39,8 @@
 
         $id = $atts['id'];
         $name = $atts['name'];
-
+        
+        //&echo "test";
         $content = do_overlay($id, $name);
 
         return $content;
@@ -109,10 +110,11 @@
      * In this function is the overlay. This is loading in the shortcode
      */
 	function do_overlay( $id, $name ) {
-		global $wpdb;
+        global $wpdb;
 		if( $name ) {
-            $result_content_box = $wpdb->get_results( 'select * from ' . $wpdb->prefix . 'optin_content where contentbox_name =' . $name );
-            $get_data_overlay = $wpdb->get_results( 'select * from ' . $wpdb->prefix . 'optin_content_overlay where  =' . $id);
+            $result_content_box = $wpdb->get_results( 'select * from ' . $wpdb->prefix . 'optin_content where contentbox_name ="' . $name.'"' );
+            $result_id = $result_content_box[0]->id;
+            $get_data_overlay = $wpdb->get_results( 'select * from ' . $wpdb->prefix . 'optin_content_overlay where id = '.$result_id);
         }
         else {
             $result_content_box = $wpdb->get_results( 'select * from ' . $wpdb->prefix . 'optin_content where id =' . $id );
@@ -126,9 +128,8 @@
 		if( $get_data_overlay[0]->overlay_color != "" ) {
             $css_overlay =   'background-color: '.$get_data_overlay[0]->overlay_color.';';
         }
-
         // get height and width for overlay
-        $overlay_height = "";
+       $overlay_height = "";
         $overlay_width = "";
 		if ( $attr_style!= '' ){
             $args = explode(';', $attr_style);
@@ -143,8 +144,8 @@
 		if($height_overlay_db) {
             $css_overlay .= 'height: '.$height_overlay_db.(is_numeric($height_overlay_db) ? 'px' : '').';';
         } else {
-            if(!$overlay_height) {
-                $overlay_height = searchSize ( $optin_content, '="', 'height' );
+           if(!$overlay_height) {
+                $overlay_height = search_size ( $optin_content, '="', 'height' );
             }
             $css_overlay .= (!$overlay_height ? '' : 'height: '.$overlay_height.';');
         }
@@ -154,14 +155,14 @@
             $css_overlay .= 'width: '.$width_overlay.(is_numeric($width_overlay) ? 'px' : '').';';
         } else {
             if (!$overlay_width) {
-                $overlay_width = searchSize($optin_content, '="', 'width');
+                $overlay_width = search_size($optin_content, '="', 'width');
             }
             $css_overlay .= (!$overlay_width ? '' : 'width: ' . $overlay_width . ';');
         }
 
         if($get_data_overlay[0]->image_id != 0){
             $image_src = get_image_for_overlay($get_data_overlay[0]->image_id, $get_data_overlay[0]->image_size);
-
+            
             if( $get_data_overlay[0]->image_size == 'full' ) {
                 $css_overlay .= 'background-image: url('.$image_src.');
                             background-repeat: no-repeat;
@@ -175,8 +176,8 @@
 		}
 		if($get_data_overlay[0]->datenschutz_on_or_off == 1) {
 			$datenschutz_button = '<button><a href="'.get_the_permalink($get_data_overlay[0]->datenschutz).'">Datenschutzerklärung</a></button>';
-		}
-
+        }
+        
         $html_overlay = '
             <div><div id="overlay'.$id.'" class="my-overlay" style="'.$css_overlay.'">
                 <div class="my-overlay-inner">
@@ -189,6 +190,7 @@
                 '.$datenschutz_button.'
 				</div>
             </div></div>';
+
         return $html_overlay;
     }
 
@@ -203,6 +205,7 @@
 	 * This function find height and width from overlay
 	 */
     function search_size($string, $searchChar, $searchArg){
+
         $string = str_replace('>', '', $string);
         $string = str_replace('<', '', $string);
 

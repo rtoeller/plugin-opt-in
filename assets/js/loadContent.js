@@ -11,7 +11,7 @@ jQuery(document).ready(function(){
         
         jQuery.ajax({
 			type: 'post',
-			url: '/wp-content/plugins/opt-in/include/get_content.php',
+			url: '/wp-content/plugins/plugin-opt-in/include/get_content.php',
 			data: {
 				contentbox_id: id
 			},
